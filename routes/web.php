@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminMenuLeftController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +17,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//Route::get('/trang-chu', function () {
+//    return view('welcome');
+//});
+
+//Frontend
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home',[HomeController::class, 'index']);
+//Backend;
+//Route::get('/admin',[AdminController::class, 'decentralization']);
+Route::get('/dashboard',[LoginController::class, 'decentralization']);
+Route::get('/logout',[LoginController::class, 'logout']);
+Route::post('/admin-dashboard',[LoginController::class, 'check_login']);
+
+Route::get('/admin',[LoginController::class, 'decentralization']);
+
+Route::prefix('admin')->group(function () {
+    Route::get('',[LoginController::class, 'decentralization']);
+    Route::get('/1',[LoginController::class, 'decentralization']);
+    Route::get('/2',[LoginController::class, 'decentralization']);
+    Route::get('/3',[LoginController::class, '']);
+    Route::get('/4',[LoginController::class, '']);
+    Route::get('/5',[LoginController::class, '']);
+    Route::get('/6',[LoginController::class, '']);
+    Route::get('/7',[LoginController::class, '']);
+    Route::get('/8',[LoginController::class, '']);
+    Route::get('/9',[AccountController::class, 'account_management']);
+    Route::get('/10',[PermissionController::class, 'permission_management']);
 });

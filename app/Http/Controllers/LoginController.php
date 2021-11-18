@@ -35,18 +35,25 @@ class LoginController extends Controller
                     $id=$row->id;
                     $position=$row->position_id;
                     $password=$row->password;
+                    $status=$row->status;
                 }
                 //Kiểm tra mật khẩu có đúng không
                 if(password_verify($admin_password,$password)){
-                    //Kiểm tra người dùng có chọn lưu mật khẩu không
-                    if($admin_save_passwword==1){
-                        Cookie::queue('admin_id_cookie', $id,10);//Tạo cookie
-                        Cookie::queue('admin_position_cookie', $position,10);
-                        return Redirect::to('/dashboard');
+                    //Kiểm tra tài khoản có bị khóa không
+                    if($status==1){
+                        //Kiểm tra người dùng có chọn lưu mật khẩu không
+                        if($admin_save_passwword==1){
+                            Cookie::queue('admin_id_cookie', $id,10);//Tạo cookie
+                            Cookie::queue('admin_position_cookie', $position,10);
+                            return Redirect::to('/dashboard');
+                        }else{
+                            Session::put('admin_id', $id);//Tạo session
+                            Session::put('admin_position', $position);
+                            return Redirect::to('/dashboard');
+                        }
                     }else{
-                        Session::put('admin_id', $id);//Tạo session
-                        Session::put('admin_position', $position);
-                        return Redirect::to('/dashboard');
+                        Session::put('message',"Tài khoản đang bị khóa.");
+                        return view('admin_login');
                     }
                 }else{
                     Session::put('message',"Sai mật khẩu.");

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AccountModel;
+use App\Models\PositionModel;
 use Session;
 use Cookie;
+use Hash;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -20,13 +22,36 @@ class AccountController extends Controller
     }
 
     //Xử lý hiện giao điện quản lý tài khoản
-    public function account_management()
-    {
+    public function account_management(){
         if(CheckController::check_session()) {
             return view('admin.account_management')
                 ->with('arAccount', $this->account());
         }else{
             return view('admin_login');
         }
+    }
+
+    public function hidden_account(Request $request){
+        AccountModel::hidden_account($request->get('id'),0);
+        return $this->account_management();
+    }
+
+    public function unhidden_account(Request $request){
+        AccountModel::hidden_account($request->get('id'),1);
+        return $this->account_management();
+    }
+
+    public function add_account()
+    {
+        return view('admin.add_account')
+                ->with('arPosition',PositionModel::position());
+    }
+
+    public function add_save_account(Request $request)
+    {
+        $id = AccountModel::select_account_end();
+        $password = Hash::make($request->get('password'));
+        AccountModel::insert($id+1, $request->get('position_id'), $request->get('username'), $password, 2);
+        return $this->account_management();
     }
 }

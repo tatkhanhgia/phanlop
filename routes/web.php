@@ -45,6 +45,23 @@ Route::prefix('admin')->group(function () {
     Route::get('/6',[LoginController::class, '']);
     Route::get('/7',[LoginController::class, '']);
     Route::get('/8',[LoginController::class, '']);
-    Route::get('/9',[AccountController::class, 'account_management']);
-    Route::get('/10',[PermissionController::class, 'permission_management']);
+    Route::prefix('/9')->group(function () {
+        Route::get('',[AccountController::class, 'account_management']);
+        Route::get('/add',[AccountController::class, 'add_account']);
+        Route::post('/add_account',[AccountController::class, 'add_save_account']);
+        Route::post('/hidden',[AccountController::class, 'hidden_account']);
+        Route::post('/unhidden',[AccountController::class, 'unhidden_account']);
+    });
+
+    Route::prefix('/10')->group(function () {
+        Route::get('',[PermissionController::class, 'permission_management']);
+        Route::get('/add',[PermissionController::class, 'add_position_permission']);
+        Route::post('/add-save',[PermissionController::class, 'repair_save_position_permission']);
+        Route::post('/hidden',[PermissionController::class, 'hidden_position_permission']);
+        Route::get('/unhidden',[PermissionController::class, 'unhidden_position_permission']);
+        Route::post('/unhidden-save',[PermissionController::class, 'unhidden_save_position_permission']);
+        Route::get('/repair',[PermissionController::class, 'repair_position_permission']);
+        Route::post('/repair-save',[PermissionController::class, 'repair_save_position_permission']);
+        
+    });
 });

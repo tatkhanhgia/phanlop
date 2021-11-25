@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminMenuLeftController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\MaterialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,17 +35,7 @@ Route::get('/logout',[LoginController::class, 'logout']);
 Route::post('/admin-dashboard',[LoginController::class, 'check_login']);
 
 Route::get('/admin',[LoginController::class, 'decentralization']);
-
-Route::prefix('admin')->group(function () {
-    Route::get('',[LoginController::class, 'decentralization']);
-    Route::get('/1',[LoginController::class, 'decentralization']);
-    Route::get('/2',[LoginController::class, 'decentralization']);
-    Route::get('/3',[LoginController::class, '']);
-    Route::get('/4',[LoginController::class, '']);
-    Route::get('/5',[LoginController::class, '']);
-    Route::get('/6',[LoginController::class, '']);
-    Route::get('/7',[LoginController::class, '']);
-    Route::get('/8',[LoginController::class, '']);
+Route::prefix('/admin')->group(function(){
     Route::prefix('/9')->group(function () {
         Route::get('',[AccountController::class, 'account_management']);
         Route::get('/add',[AccountController::class, 'add_account']);
@@ -65,3 +56,21 @@ Route::prefix('admin')->group(function () {
         
     });
 });
+Route::prefix('pages')->group(function () {
+    Route::get('',[LoginController::class, 'decentralization']);
+    Route::get('/1',[LoginController::class, 'decentralization']);
+    Route::prefix('/2')->group(function () {
+        Route::get('',[MaterialController::class, 'open_class']);
+        Route::get('/add',[AccountController::class, 'add_account']);
+        Route::post('/hidden',[MaterialController::class, 'hidden_mate']);
+        Route::post('/unhidden',[MaterialController::class, 'unhidden_mate']);
+    });
+    Route::get('/3',[LoginController::class, '']);
+    Route::get('/4',[LoginController::class, '']);
+    Route::get('/5',[LoginController::class, '']);
+    Route::get('/6',[LoginController::class, '']);
+    Route::get('/7',[LoginController::class, '']);
+    Route::get('/8',[LoginController::class, '']);
+});
+
+?>

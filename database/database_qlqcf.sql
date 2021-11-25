@@ -99,6 +99,31 @@ CREATE TABLE `material` (
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đổ dữ liệu cho bảng `material`
+--
+INSERT INTO `material` (`id`, `producer_id`, `title_name`, `quantity`, `importprice`,`importdate`,`status`) VALUES
+(1, 1, 'Cà phê gói'     , 10  , '2.350.000', '2021-10-20', 1),
+(2, 1, 'Trà olong gói'  , 1000, '1.500.000', '2021-10-20', 1),
+(3, 1, 'Trà đào gói'    , 1000, '1.500.000', '2021-10-20', 1),
+(4, 1, 'Sen hộp'        , 100 , '1.250.000', '2021-10-20', 1),
+(5, 1, 'Đào hộp'        , 100 , '1.300.000', '2021-10-20', 1),
+(6, 1, 'Sysrup đào'     , 10  , '1.100.000', '2021-10-20', 1),
+(7, 1, 'Syrup Sả'       , 10  , '1.100.000', '2021-10-20', 1),
+(8, 1, 'Bột trà xanh'   , 10  , '2.100.000', '2021-10-20', 1),
+(9, 1, 'Bột chocolate'  , 10  , '2.125.000', '2021-10-20', 1),
+(10, 2, 'Sữa kem béo'    , 20  , '1.750.000', '2021-10-20', 1),
+(11, 2, 'Bánh oreo'      , 15  , '250.000'  , '2021-10-20', 1),
+(12, 2, 'Đường cát'      , 30  , '900.000'  , '2021-10-20', 1),
+(13, 3, 'Ly'             , 200 , '1.000.000', '2021-10-20', 1),
+(14, 3, 'Nắp'            , 200 , '1.000.000', '2021-10-20', 1),
+(15, 2, 'Sữa đặc'        , 48  , '750.000'  , '2021-10-20', 1),
+(16, 2, 'Sữa tươi'       , 50  , '1.500.000', '2021-10-20', 1),
+(17, 3, 'Bánh mouse Trà Xanh',20,'400.000'  , '2021-10-20', 1),
+(18, 3, 'Bánh mouse Đào' , 20  , '400.000'  , '2021-10-20', 1),
+(19, 3, 'Bánh mouse Cacao', 20 , '400.000'  , '2021-10-20', 1);
+
+
 -- --------------------------------------------------------
 
 --
@@ -208,6 +233,14 @@ CREATE TABLE `producer` (
   `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đổ dữ liệu bảng `producer`
+--
+INSERT INTO `producer` (`id`, `title_name`, `phonenumber`, `address` ,`status`) VALUES
+(1, 'Thái Phiên', '0987654321', '12 Hai Bà Trưng Quận 1'    , 1),
+(2, 'Câu lạc bộ', '0123456789', '980 Nguyễn Thái Học Quận 1', 1),
+(3, 'Việt Thái' , '0132457689', '25/2 Lý Nam Đế Quận 11'    , 1);
 
 -- --------------------------------------------------------
 

@@ -7,6 +7,9 @@ use App\Http\Controllers\AdminMenuLeftController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ImportcouponController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,9 +68,24 @@ Route::prefix('pages')->group(function () {
         Route::post('/hidden',[MaterialController::class, 'hidden_mate']);
         Route::post('/unhidden',[MaterialController::class, 'unhidden_mate']);
     });
-    Route::get('/3',[LoginController::class, '']);
-    Route::get('/4',[LoginController::class, '']);
-    Route::get('/5',[LoginController::class, '']);
+    Route::prefix('/3')->group(function () {
+        Route::get('',[TypeController::class, 'open_class']);
+        Route::get('/add',[TypeController::class, 'add_type']);
+        Route::post('/hidden',[TypeController::class, 'hidden_type']);
+        Route::post('/unhidden',[TypeController::class, 'unhidden_type']);
+    });
+    Route::prefix('/4')->group(function () {
+        Route::get('',[ProductController::class, 'open_class']);
+        Route::get('/add',[ProductController::class, 'add_type']);
+        Route::post('/hidden',[ProductController::class, 'hidden_type']);
+        Route::post('/unhidden',[ProductController::class, 'unhidden_type']);
+    });
+    Route::prefix('/5')->group(function () {
+        Route::get('',[ImportcouponController::class, 'open_class']);
+        Route::get('/add',[ImportcouponController::class, 'add_type']);
+        Route::post('/hidden',[ImportcouponController::class, 'hidden_type']);
+        Route::post('/unhidden',[ImportcouponController::class, 'unhidden_type']);
+    });
     Route::get('/6',[LoginController::class, '']);
     Route::get('/7',[LoginController::class, '']);
     Route::get('/8',[LoginController::class, '']);

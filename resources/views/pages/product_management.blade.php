@@ -8,7 +8,7 @@
             Quản lý Sản phẩm
         </div>
         <div class="panel-body">
-            <table id="table_account_manager" class="display" style="width:100%">
+            <table id="table_account_manage" class="display" style="width:100%">
                 <thead>
                     <tr>
                         <th>Mã sản phẩm</th>
@@ -17,6 +17,7 @@
                         <th>Gía bán</th>
                         <th>Dates</th>                        
                         <th>Trạng thái</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>

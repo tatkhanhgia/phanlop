@@ -8,7 +8,7 @@
             Quản lý Kho Nguyên Liệu
         </div>
         <div class="panel-body">
-            <table id="table_account_manager" class="display" style="width:100%">
+            <table id="table_material" class="display" style="width:100%">
                 <thead>
                     <tr>
                         <th>Mã nguyên liệu</th>
@@ -18,6 +18,7 @@
                         <th>Gía nhập</th>
                         <th>Ngày nhập</th>
                         <th>Trạng thái</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>

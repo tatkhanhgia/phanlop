@@ -69,19 +69,51 @@ CREATE TABLE `importcoupon` (
   `importdate` date DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
+--
+--Đổ dữ liệu cho bảng import
+INSERT INTO `importcoupon` (`id`, `producer_id`,`total`,`importdate`,`status`) VALUES
+(1, 1, '6.600.000','2021-10-20', 1),
+(2, 2, '2.900.000','2021-10-20', 1),
+(3, 3, '2.000.000','2021-10-20', 1),
+(4, 1, '7.725.000','2021-10-21', 1),
+(5, 2, '2.250.000','2021-10-21', 1),
+(6, 3, '1.200.000','2021-10-21', 1);
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `importcoupon_detail`
+-- Cấu trúc bảng cho bảng `importcoupon_detail` thêm quantity
 --
 
 CREATE TABLE `importcoupon_detail` (
   `importcoupon_id` int(11) DEFAULT NULL,
   `material_id` int(11) DEFAULT NULL,
+  `quantity` float DEFAULT NULL,
   `total` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `importdate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+--Đổ dữ liệu cho bảng chi tiết nhập
+INSERT INTO `importcoupon_detail` (`importcoupon_id`, `material_id`,`quantity`,`total`,`importdate`) VALUES
+(1, 1, 10,'2.350.000','2021-10-20'),
+(1, 2, 1000,'1.500.000','2021-10-20'),
+(1, 3, 1000,'1.500.000','2021-10-20'),
+(1, 4, 100,'1.250.000','2021-10-20'),
+(2, 10, 20,'1.750.000','2021-10-20'),
+(2, 11, 15,'250.000','2021-10-20'),
+(2, 12, 30,'900.000','2021-10-20'),
+(3, 13, 200,'1.000.000','2021-10-20'),
+(3, 14, 200,'1.000.000','2021-10-20'),
+(4, 5, 100,'1.300.000','2021-10-21'),
+(4, 6, 10,'1.100.000','2021-10-21'),
+(4, 7, 10,'1.100.000','2021-10-21'),
+(4, 8, 10,'2.100.000','2021-10-21'),
+(4, 9, 10,'2.125.000','2021-10-21'),
+(5, 15, 48,'750.000','2021-10-21'),
+(5, 16, 50,'1.500.000','2021-10-21'),
+(6, 17, 20,'400.000','2021-10-21'),
+(6, 18, 20,'400.000','2021-10-21'),
+(6, 19, 20,'400.000','2021-10-21');
+
 
 -- --------------------------------------------------------
 
@@ -138,6 +170,16 @@ CREATE TABLE `payment` (
   `importdate` date DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+-- Đổ dữ liệu cho bảng payment
+--
+INSERT INTO `payment` (`id`, `importcoupon_id`, `staff_id`, `total`, `importdate`,`status`) VALUES
+(1, 1, 2  , '6.600.000', '2021-10-20', 1),
+(2, 2, 2  , '2.900.000', '2021-10-20', 1),
+(3, 3, 2  , '2.000.000', '2021-10-20', 1),
+(4, 4, 2  , '7.725.000', '2021-10-21', 1),
+(5, 5, 2  , '2.250.000', '2021-10-21', 1),
+(6, 6, 2  , '1.200.000', '2021-10-21', 1);
 
 -- --------------------------------------------------------
 

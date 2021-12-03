@@ -6,4 +6,13 @@ $(document).ready(function() {
 } );
 $(document).ready(function() {
     $('#table_position_permission').DataTable();
-} );t
+} );
+$(document).ready(function() {
+    $('#table_import').DataTable();
+} );
+$(document).ready(function() {
+    $('#table_material').DataTable();
+} );
+$(document).ready(function() {
+    $('#table_importdetail').DataTable();
+} );

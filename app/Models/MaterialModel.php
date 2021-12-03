@@ -22,11 +22,11 @@ class MaterialModel extends Model
     //Output: toàn bộ giá trị của id
     public function get_material($id){
         return DB::select('select * 
-                           from :table
+                           from material
                            where id = :id', 
-                           ['id' => $id],
-                           ['table'   => $table]);
+                           ['id' => $id]);
     }
+
 
     //Update status của nguyên liệu
     //Input: material id

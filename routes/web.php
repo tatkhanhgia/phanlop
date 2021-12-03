@@ -10,6 +10,8 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ImportcouponController;
+use App\Http\Controllers\Importcoupon_detailController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,8 +87,14 @@ Route::prefix('pages')->group(function () {
         Route::get('/add',[ImportcouponController::class, 'add_type']);
         Route::post('/hidden',[ImportcouponController::class, 'hidden_type']);
         Route::post('/unhidden',[ImportcouponController::class, 'unhidden_type']);
+        Route::post('/detail',[Importcoupon_detailController::class,'get_detail']);
     });
-    Route::get('/6',[LoginController::class, '']);
+    Route::prefix('/6')->group(function () {
+        Route::get('',[PaymentController::class, 'open_class']);
+        Route::get('/add',[PaymentController::class, 'add_type']);
+        Route::post('/hidden',[PaymentController::class, 'hidden_type']);
+        Route::post('/unhidden',[PaymentController::class, 'unhidden_type']);        
+    });
     Route::get('/7',[LoginController::class, '']);
     Route::get('/8',[LoginController::class, '']);
 });

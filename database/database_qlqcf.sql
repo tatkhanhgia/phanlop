@@ -69,8 +69,11 @@ CREATE TABLE `importcoupon` (
   `importdate` date DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
+
+/*--
 --Đổ dữ liệu cho bảng import
+*/
+
 INSERT INTO `importcoupon` (`id`, `producer_id`,`total`,`importdate`,`status`) VALUES
 (1, 1, '6.600.000','2021-10-20', 1),
 (2, 2, '2.900.000','2021-10-20', 1),
@@ -91,8 +94,10 @@ CREATE TABLE `importcoupon_detail` (
   `total` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `importdate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
+
+/*--
 --Đổ dữ liệu cho bảng chi tiết nhập
+--*/
 INSERT INTO `importcoupon_detail` (`importcoupon_id`, `material_id`,`quantity`,`total`,`importdate`) VALUES
 (1, 1, 10,'2.350.000','2021-10-20'),
 (1, 2, 1000,'1.500.000','2021-10-20'),
@@ -297,20 +302,22 @@ CREATE TABLE `product` (
   `dates` date DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---Đổ dữ liệu cho bảng product _ sản phẩm
+
+/*--Đổ dữ liệu cho bảng product _ sản phẩm*/
+
 INSERT INTO `product` (`id`, `type_id`, `saleprice`,`dates`,`status`) VALUES
-(1,1,"29.000",'2021-10-20',1), --cf den
-(2,1,"29.000",'2021-10-20',1), --cf sua
-(3,1,"29.000",'2021-10-20',1), --bac xiu
-(4,2,"39.000",'2021-10-20',1), --tra olong
-(5,2,"39.000",'2021-10-20',1), --tra dao
-(6,2,"39.000",'2021-10-20',1), --tra sua
-(7,3,"19.000",'2021-10-20',1), --banh tira
-(8,3,"19.000",'2021-10-20',1), --banh mouse Dao
-(9,3,"19.000",'2021-10-20',1), --banh mouse Chanh day
-(10,4,"49.000",'2021-10-20',1), --tra xanh da xay
-(11,4,"49.000",'2021-10-20',1), --socola da xay
-(12,4,"49.000",'2021-10-20',1); --cookie&cream
+(1,1,"29.000",'2021-10-20',1), /*cf den*/
+(2,1,"29.000",'2021-10-20',1), /*cf sua*/
+(3,1,"29.000",'2021-10-20',1), /*bac xiu*/
+(4,2,"39.000",'2021-10-20',1), /*tra olong*/
+(5,2,"39.000",'2021-10-20',1), /*tra dao*/
+(6,2,"39.000",'2021-10-20',1), /*tra sua*/
+(7,3,"19.000",'2021-10-20',1), /*banh tira*/
+(8,3,"19.000",'2021-10-20',1), /*banh mouse Dao*/
+(9,3,"19.000",'2021-10-20',1), /*banh mouse Chanh day*/
+(10,4,"49.000",'2021-10-20',1), /*tra xanh da xay*/
+(11,4,"49.000",'2021-10-20',1), /*socola da xay*/
+(12,4,"49.000",'2021-10-20',1); /*cookie&cream*/
 
 
 -- --------------------------------------------------------
@@ -377,7 +384,9 @@ CREATE TABLE `type` (
   `title_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---Đổ dữ liệu cho bảng type _ loại sản phẩm
+
+/*--Đổ dữ liệu cho bảng type _ loại sản phẩm*/
+
 INSERT INTO `type` (`id`, `title_name`, `status`) VALUES
 (1,'Cà phê', 1),
 (2,'Trà', 1),

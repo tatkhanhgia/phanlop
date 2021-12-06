@@ -108,12 +108,12 @@ Route::prefix('pages')->group(function () {
     });
     Route::prefix('/7')->group(function () {
         Route::get('',[ReceiptController::class, 'open_class']);
-        Route::post('/change',[StaffController::class, 'change_staff']);
-        Route::post('/change_save',[StaffController::class, 'update']);
-        Route::post('/hidden',[StaffController::class, 'hidden_staff']);
-        Route::post('/unhidden',[StaffController::class, 'unhidden_staff']);
-        Route::get('/add',[StaffController::class, 'add_staff']);        
-        Route::post('/add_save',[StaffController::class, 'add_staff_save']);        
+        Route::post('/detail',[ReceiptController::class, 'change_staff']);
+        Route::post('/change_save',[ReceiptController::class, 'update']);
+        Route::post('/hidden',[ReceiptController::class, 'hidden_staff']);
+        Route::post('/unhidden',[ReceiptController::class, 'unhidden_staff']);
+        Route::get('/add',[ReceiptController::class, 'add_receipt']);        
+        Route::post('/add_save',[ReceiptController::class, 'add_receipt_save']);        
     });
 });
 

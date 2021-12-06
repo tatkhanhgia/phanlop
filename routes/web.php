@@ -12,6 +12,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ImportcouponController;
 use App\Http\Controllers\Importcoupon_detailController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\ReceiptController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,8 +97,24 @@ Route::prefix('pages')->group(function () {
         Route::post('/hidden',[PaymentController::class, 'hidden_type']);
         Route::post('/unhidden',[PaymentController::class, 'unhidden_type']);        
     });
-    Route::get('/7',[LoginController::class, '']);
-    Route::get('/8',[LoginController::class, '']);
+    Route::prefix('/8')->group(function () {
+        Route::get('',[StaffController::class, 'open_class']);
+        Route::post('/change',[StaffController::class, 'change_staff']);
+        Route::post('/change_save',[StaffController::class, 'update']);
+        Route::post('/hidden',[StaffController::class, 'hidden_staff']);
+        Route::post('/unhidden',[StaffController::class, 'unhidden_staff']);
+        Route::get('/add',[StaffController::class, 'add_staff']);        
+        Route::post('/add_save',[StaffController::class, 'add_staff_save']);        
+    });
+    Route::prefix('/7')->group(function () {
+        Route::get('',[ReceiptController::class, 'open_class']);
+        Route::post('/change',[StaffController::class, 'change_staff']);
+        Route::post('/change_save',[StaffController::class, 'update']);
+        Route::post('/hidden',[StaffController::class, 'hidden_staff']);
+        Route::post('/unhidden',[StaffController::class, 'unhidden_staff']);
+        Route::get('/add',[StaffController::class, 'add_staff']);        
+        Route::post('/add_save',[StaffController::class, 'add_staff_save']);        
+    });
 });
 
 ?>

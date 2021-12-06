@@ -10,7 +10,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="col-md-12">
-                            <form action="{{URL :: to('admin/13/repair-save')}}" method="post">
+                            <form action="{{URL :: to('admin/10/repair-save')}}" method="post">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <div id="macv" name="macv" value=""></div>

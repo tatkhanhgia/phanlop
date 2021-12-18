@@ -1,5 +1,8 @@
 @extends('admin_layout')
 @section('admin_content')
+<div class="table-agile-info">
+    <a href="{{URL::to('pages/2/count')}}"><button type="submit" class="btn btn-warning" id="add_position"><i class="fas fa-plus-circle"></i>Tồn hàng</button></a>
+</div>
 {{--------------------------------------------------------------------------------------------------------------------}}
 {{--Quản lý Kho--}}
 <div class="table-agile-info" style="margin-top: 10px">

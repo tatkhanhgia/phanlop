@@ -1,7 +1,7 @@
 <!--logo start-->
 <div class="brand">
     <a href="index.html" class="logo">
-        <h3> Trang Admin</h3>
+        <h3>Hệ thống quản lý</h3>
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>

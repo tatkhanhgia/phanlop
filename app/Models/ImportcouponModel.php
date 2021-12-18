@@ -34,9 +34,14 @@ class ImportcouponModel extends Model
     //Update status của loại
     //Input: type id
     //Output: Null
-    public function set_status_type($id, $status)
+    public function set_status_import($id, $status)
     {
         DB::update('update importcoupon set status = ? where id = ?',[$status,$id]);
+    }
+
+    public function update_total($id, $total)
+    {
+        DB::update('update importcoupon set total = ? where id = ?',[$total,$id]);
     }
 
     //Insert type

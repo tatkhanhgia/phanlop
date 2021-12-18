@@ -30,9 +30,9 @@ class Importcoupon_detailModel extends Model
     //Insert type
     //Input: 
     //Output: null
-    public function insert($importcoupon_id, $material_id, $total, $importdate)
+    public function insert($importcoupon_id, $material_id,$quantity, $total, $importdate)
     {
-        DB::insert('insert into importcoupon_detail values (?,?,?,?)',
-                    [$importcoupon_id, $material_id, $total, $importdate]);
+        DB::insert('insert into importcoupon_detail values (?,?,?,?,?)',
+                    [$importcoupon_id, $material_id,$quantity, $total, $importdate]);
     }
 }

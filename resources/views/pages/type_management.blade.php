@@ -1,8 +1,5 @@
 @extends('admin_layout')
 @section('admin_content')
-<div class="table-agile-info">
-    <a href="{{URL::to('pages/3/add')}}"><button type="submit" class="btn btn-warning" id="add_position">Thêm loại sản phẩm</button></a>
-</div>
 {{--------------------------------------------------------------------------------------------------------------------}}
 {{--Quản lý loại sản phẩm--}}
 <div class="table-agile-info" style="margin-top: 10px">

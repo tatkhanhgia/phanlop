@@ -86,7 +86,10 @@ Route::prefix('pages')->group(function () {
     });
     Route::prefix('/5')->group(function () {
         Route::get('',[ImportcouponController::class, 'open_class']);
-        Route::get('/add',[ImportcouponController::class, 'add_type']);
+        Route::get('/add',[ImportcouponController::class, 'add_import']);
+        Route::post('/add_save',[ImportcouponController::class, 'add_import_save']);
+        Route::post('/add_detail_save',[ImportcouponController::class, 'add_detail_save']);
+        Route::post('/delete_all',[ImportcouponController::class, 'delete_import']);
         Route::post('/hidden',[ImportcouponController::class, 'hidden_type']);
         Route::post('/unhidden',[ImportcouponController::class, 'unhidden_type']);
         Route::post('/detail',[Importcoupon_detailController::class,'get_detail']);

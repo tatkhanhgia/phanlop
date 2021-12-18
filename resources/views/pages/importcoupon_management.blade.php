@@ -1,7 +1,7 @@
 @extends('admin_layout')
 @section('admin_content')
 <div class="table-agile-info">
-    <a href="{{URL::to('admin/9/add')}}"><button type="submit" class="btn btn-warning" id="add_position"><i class="fas fa-plus-circle"></i>Thêm phiếu nhập kho</button></a>
+    <a href="{{URL::to('pages/5/add')}}"><button type="submit" class="btn btn-warning" id="add_position"><i class="fas fa-plus-circle"></i>Thêm phiếu nhập kho</button></a>
 </div>
 {{--------------------------------------------------------------------------------------------------------------------}}
 {{--Quản lý phiếu nhập hàng--}}
@@ -38,12 +38,12 @@
                         @endif                        
                         <td>
                             @if($arraycolumn[4]==1)
-                                <form method="post" action="{{URL::to('pages/4/hidden')}}">
+                                <form method="post" action="{{URL::to('pages/5/hidden')}}">
                                     {{ csrf_field() }}
                                     <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa phiếu" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box" ></i></button>
                                 </form>
                             @elseif($arraycolumn[4]==0)
-                                <form method="post" action="{{URL::to('pages/4/unhidden')}}">
+                                <form method="post" action="{{URL::to('pages/5/unhidden')}}">
                                     {{ csrf_field() }}
                                     <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở khóa" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
                                 </form>

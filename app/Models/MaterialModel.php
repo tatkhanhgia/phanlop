@@ -27,6 +27,15 @@ class MaterialModel extends Model
                            ['id' => $id]);
     }
 
+    public function get_quantity($id)
+    {
+       return DB::table('material')
+                ->select('quantity')
+                ->where('id',$id)
+                ->get();
+
+    }
+
 
     //Update status của nguyên liệu
     //Input: material id

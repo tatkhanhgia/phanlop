@@ -17,35 +17,35 @@
 <div class="col-lg-12">
 	<section class="panel">
 		<header class="panel-heading">
-			Hóa Đơn Bán Hàng
+			Chỉnh sửa Hóa Đơn Bán Hàng
 		</header>
 
 		<div class="panel-body" style="display: block;">
 			<div class="form">            
-				<form class="cmxform form-horizontal " id="signupForm" method="post" action="{{URL::to('pages/7/add_save')}}" novalidate="novalidate">
+				<form class="cmxform form-horizontal " id="signupForm" method="post" action="{{URL::to('pages/7/detail_save')}}" novalidate="novalidate">
 					{{ csrf_field() }}
 					<div class="form-group ">
 						<label for="username" class="control-label col-lg-3">Mã hóa đơn</label>
 						<div class="col-lg-6">
-							<input class=" form-control" id="id" name="id" type="text" value="<?php echo $arrayMate[0][0]?>" readonly="readonly">
+							<input class=" form-control" id="id" name="id" type="text" value="<?php echo $arrayMate[0]?>" readonly="readonly">
 						</div>
 					</div>
                     <div class="form-group ">
 						<label for="username" class="control-label col-lg-3">Mã nhân viên</label>
 						<div class="col-lg-6">
-							<input class=" form-control" id="staffid" name="staffid" type="text" value="<?php echo Session::get('admin_id')?>" readonly="readonly">
+							<input class=" form-control" id="staffid" name="staffid" type="text" value="<?php echo $arrayMate[1]?>" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group ">
 						<label for="agree" class="control-label col-lg-3 col-sm-3">Ngày</label>
 						<div class="col-lg-6 col-sm-9">
-                            <input class=" form-control" type="text" id="datepicker" name="datepicker" readonly="readonly">
+                            <input class=" form-control" type="text" id="datepicker" name="datepicker" readonly="readonly" value="<?php echo $arrayMate[3]?>">
 						</div>
 					</div>
                     <div class="form-group ">
 						<label for="agree" class="control-label col-lg-3 col-sm-3">Tổng tiền</label>
 						<div class="col-lg-6 col-sm-9">
-                            <input class=" form-control" type="text" id="total" name="total" value ="0" readonly="readonly">
+                            <input class=" form-control" type="text" id="total" name="total" value ="<?php echo $arrayMate[2]?>" readonly="readonly">
 						</div>
 					</div>
                 <div class="table-agile-info" style="margin-top: 10px">
@@ -65,20 +65,21 @@
 					        </thead>
                         <?php $count = 1; $count2=13;?>
                         <tbody>	
-                         @foreach($arrayMate as $row)
-					        							                    
+                         @foreach($arrayMate[6] as $row)                                                        
 						    <tr>
                             <td>{{$row[1]}}</td> <!--id-->
-							<td>{{$row[2]}}</td> <!--tên sp-->
-                            <td>{{$row[3]}}</td> <!--giá sp -->
-                            @if($row[4] == 1)
-							<td><label><input class=" form-control" type="text" id="<?php echo $count; ?>" name="<?php echo $count;?>" value ="0" pattern="[0-9.]*" required onchange="onupdate(<?php echo $count;$count++;?>)"></label></td>
-							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="0" pattern="[0-9.]*" required readonly= "readonly"></label></td>
-                            @else
-                            <td><label><input class=" form-control" type="text" id="<?php echo $count; ?>" name="<?php echo $count;?>" value ="0" pattern="[0-9.]*" required onchange="onupdate(<?php echo $count;$count++;?>)" readonly= "readonly"></label></td>
-							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="0" pattern="[0-9.]*" required readonly= "readonly"></label></td>
+							<td>{{$row[3]}}</td> <!--tên sp-->
+                            <td>{{$row[2]}}</td> <!--giá sp -->
+                            <?php $value = 0; ?>
+                            @foreach($arrayMate[5] as $row2)
+                            @if($row[1] == $row2[1])
+                                <?php $value = $row2[2]?>
                             @endif
+                            @endforeach
+							<td><label><input class=" form-control" type="text" id="<?php echo $count; ?>" name="<?php echo $count;?>" value ="<?php echo $value;?>" pattern="[0-9.]*" required onchange="onupdate(<?php echo $count;$count++;?>)"></label></td>                                                                                    
+							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="0" pattern="[0-9.]*" required></label></td>
 						    </tr>
+                            
                         @endforeach						
 					    </tbody>
 			</table>
@@ -88,10 +89,12 @@
 					<div class="form-group">
 						<div class="col-lg-offset-3 col-lg-6">
 							<button class="btn btn-primary" type="submit">Lưu</button>
+                            
 							<a href="{{URL::to('pages/7/')}}"><button class="btn btn-default" type="button">Hủy</button></a>
 						</div>
 					</div>                    
 				</form>
+                <button class="btn btn-primary" type="text" onclick="onupdate2()">Reload</button>
 			</div>
 		</div>
         
@@ -108,8 +111,25 @@
       autoclose: true, 
       todayHighlight: true
     });
-    $("#datepicker").datepicker("setDate",'now');
   } );
+function onupdate2(){
+    var i = 0;
+    for(i;i<13;i++){
+        var a = i + 1 + 12;
+        var soluong = document.getElementById(i+1).value;
+        var b = [
+        29000,29000,29000,
+        39000,39000,39000,
+        19000,19000,19000,
+        49000,49000,49000
+        ];
+        var c = soluong*b[i];
+        document.getElementById(a).value = c;
+        var tongtien_total = document.getElementById('total').value;
+        tongtien_total = parseInt(c,10) + parseInt(tongtien_total,10);
+        document.getElementById('total').value = tongtien_total;
+    }
+}
 function onupdate(id){
     var a = id +12;
     var soluong = document.getElementById(id).value;

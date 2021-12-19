@@ -16,3 +16,6 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#table_importdetail').DataTable();
 } );
+$(document).ready(function() {
+    $('#table_receipt').DataTable();
+} );

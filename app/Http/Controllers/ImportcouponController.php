@@ -128,6 +128,47 @@ class ImportcouponController extends Controller
         }
         return $this->open_class();       
     }
+
+    //Hàm dành cho admin hiện giao diện chỉnh sửa phiếu nhập kho
+    public function detail_change(Request $request){
+        $id = $request->get('id');
+        $model = ImportCouponModel::get_importcoupon($id);
+        foreach($model as $row)
+        {
+            $id = $row->id;
+            $producer = $row->producer_id;
+            $total = $row->total;
+            $date  = $row->importdate;
+            $model2 = ImportCoupon_detailModel::get_importcoupon_detail($id);
+            foreach($model2 as $row2)
+            {
+                $material = $row2->material_id;
+                $quantity = $row2->quantity;
+                $total    = $row2->total;       
+                $arrayMate2[] = array(
+                    $material,
+                    $quantity,
+                    $total
+                ) ;         
+            }
+            $arrayMate = array(
+                    $id,
+                    $producer,
+                    $total,
+                    $date,
+                    $arrayMate2
+            );
+        }
+        return view('pages.importcoupon_change')
+                    ->with('arrayMate', $arrayMate);        
+
+    }
+
+    //Hàm dành cho admin lưu phiếu nhập sau khi chỉnh sửa
+    public function detail_change_save(Request $request)
+    {
+
+    }
 }
 
 ?>

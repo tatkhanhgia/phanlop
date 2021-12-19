@@ -28,33 +28,29 @@ class ReceiptModel extends Model
         return DB::table('receipt')->orderBy('id','ASC')->get()->pluck('id')->last();
     }
 
+    public function delete_receipt($id)
+    {
+        return DB::table('receipt')->where('id', $id)->delete();
+
+    }
     //Update status 
     //Input: id
     //Output: Null
-    public function set_status_staff($id, $status)
+    public function set_status_receipt($id, $status)
     {
-        DB::update('update staff set status = ? where id = ?',[$status,$id]);
+        DB::update('update receipt set status = ? where id = ?',[$status,$id]);
     }
 
     //Update infomation
-    public function update_staff( $id, $surname, $name, $date, $phone, $address, $email)
+    public function update_receipt($id,$total)
     {
-        DB::table('staff')
+        DB::table('receipt')
                 ->where('id',$id)
                 ->update(
-                ['surname' => $surname,'firstname' => $name,
-                'dateofbirth' => $date,
-                'phonenumber' => $phone,
-                'address' => $address,
-                'email' => $email]
-            );                    
-        // DB::update('update staff set surname = ?, 
-        //                             firstname = ?,
-        //                             dateofbirth = ?,
-        //                             phonenumber = ?,
-        //                             address     = ?,
-        //                             email       = ?
-        //                             where id    = ?' ,[$surname, $name, $date, $phone, $address, $email,$id]);
+                [
+                'total' => $total,                
+                ]
+            );                          
     }
     //Insert 
     //Input: 

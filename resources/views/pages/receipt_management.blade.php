@@ -47,10 +47,13 @@
                                     <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
                                 </form>
                             @endif
+                            <?php $arStaff = Session::get('arStaff'); ?>
+                            @if($arStaff[0] == 1)
                             <form method="post" action="{{URL::to('pages/7/detail')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px;" title="Thay đổi thông tin" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-cog" ></i></button>
+                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px;" title="Thay đổi thông tin" name="receipt_detail_id" value="{{$arraycolumn[0]}}" id="receipt_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
                              </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

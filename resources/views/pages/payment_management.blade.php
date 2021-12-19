@@ -10,6 +10,10 @@
         <div class="panel-heading">
             Quản lý Phiếu Chi
         </div>
+        <?php
+            $arStaff = Session::get('arStaff');
+		    
+        ?>
         <div class="panel-body">
             <table id="table_import" class="display" style="width:100%">
                 <thead>
@@ -50,6 +54,12 @@
                                     <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở khóa" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
                                 </form>
                             @endif
+                            @if($arStaff[0] == 1)
+                            <form method="post" action="{{URL::to('pages/6/detail')}}">
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px;" title="Chi tiết phiếu" name="payment_detail_id" value="{{$arraycolumn[0]}}" id="payment_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
+                             </form> 
+                             @endif
                         </td>
                     </tr>
                 @endforeach

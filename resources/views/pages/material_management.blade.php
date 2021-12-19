@@ -40,12 +40,12 @@
                         @endif                        
                         <td>
                             @if($arraycolumn[6]==1)
-                                <form method="post" action="{{URL::to('admin/2/hidden')}}">
+                                <form method="post" action="{{URL::to('pages/2/hidden')}}">
                                     {{ csrf_field() }}
                                     <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box" ></i></button>
                                 </form>
                             @elseif($arraycolumn[6]==0)
-                                <form method="post" action="{{URL::to('admin/2/unhidden')}}">
+                                <form method="post" action="{{URL::to('pages/2/unhidden')}}">
                                     {{ csrf_field() }}
                                     <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
                                 </form>

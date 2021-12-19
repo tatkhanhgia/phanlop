@@ -1,7 +1,13 @@
 @extends('admin_layout')
 @section('admin_content')
 <div class="table-agile-info">
-    <a href="{{URL::to('pages/5')}}"><button type="submit" class="btn btn-warning" id="add_position"><i class="fas fa-arrow-circle-left">Quay lại</i></button></a>    
+    <a href="{{URL::to('pages/5')}}"><button type="submit" class="btn btn-warning" id="add_position"><i class="fas fa-arrow-circle-left">Quay lại</i></button></a>
+    <?php
+            $arStaff = Session::get('arStaff');		    
+    ?>
+    @if($arStaff[0] == 1)
+        <a href="{{URL::to('pages/5/detail_change')}}"><button type="submit" class="btn btn-warning" id="add_position"><i class="fas fa-cog" >Chỉnh sửa</i></button></a>    
+    @endif
 </div>
 {{--------------------------------------------------------------------------------------------------------------------}}
 {{--Quản lý chi tiết phiếu nhập hàng--}}

@@ -90,13 +90,18 @@ Route::prefix('pages')->group(function () {
         Route::post('/add_save',[ImportcouponController::class, 'add_import_save']);
         Route::post('/add_detail_save',[ImportcouponController::class, 'add_detail_save']);
         Route::post('/delete_all',[ImportcouponController::class, 'delete_import']);
+        Route::post('/detail_change',[ImportcouponController::class, 'detail_change']);
+        Route::post('/detail_change_save',[ImportcouponController::class, 'detail_change_save']);
         Route::post('/hidden',[ImportcouponController::class, 'hidden_type']);
         Route::post('/unhidden',[ImportcouponController::class, 'unhidden_type']);
         Route::post('/detail',[Importcoupon_detailController::class,'get_detail']);
     });
     Route::prefix('/6')->group(function () {
         Route::get('',[PaymentController::class, 'open_class']);
-        Route::get('/add',[PaymentController::class, 'add_type']);
+        Route::get('/add',[PaymentController::class, 'add_payment']);
+        Route::post('/add_payment_save',[PaymentController::class, 'add_payment_save']);
+        Route::post('/detail',[PaymentController::class, 'detail']);
+        Route::post('/detail_save',[PaymentController::class, 'detail_save']);
         Route::post('/hidden',[PaymentController::class, 'hidden_type']);
         Route::post('/unhidden',[PaymentController::class, 'unhidden_type']);        
     });
@@ -111,10 +116,10 @@ Route::prefix('pages')->group(function () {
     });
     Route::prefix('/7')->group(function () {
         Route::get('',[ReceiptController::class, 'open_class']);
-        Route::post('/detail',[ReceiptController::class, 'change_staff']);
-        Route::post('/change_save',[ReceiptController::class, 'update']);
-        Route::post('/hidden',[ReceiptController::class, 'hidden_staff']);
-        Route::post('/unhidden',[ReceiptController::class, 'unhidden_staff']);
+        Route::post('/detail',[ReceiptController::class, 'detail']);
+        Route::post('/detail_save',[ReceiptController::class, 'detail_save']);        
+        Route::post('/hidden',[ReceiptController::class, 'hidden_receipt']);
+        Route::post('/unhidden',[ReceiptController::class, 'unhidden_receipt']);
         Route::get('/add',[ReceiptController::class, 'add_receipt']);        
         Route::post('/add_save',[ReceiptController::class, 'add_receipt_save']);        
     });

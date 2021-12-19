@@ -21,11 +21,15 @@ class PaymentModel extends Model
     //Input: Null
     //Output: toàn bộ giá trị của id
     public function get_payment($id){
-        return DB::select('select * 
-                           from payment
-                           where id = :id', 
-                           ['id' => $id]);
+        // return DB::select('select * 
+        //                    from payment
+        //                    where id = :id', 
+        //                    ['id' => $id]);
+        return DB::table('payment')                
+                ->where('id',$id)
+                ->get();
     }
+
     //Get id cuối cùng 
     public function select_payment_end(){
         return DB::table('payment')->orderBy('id','ASC')->get()->pluck('id')->last();
@@ -39,12 +43,20 @@ class PaymentModel extends Model
         DB::update('update payment set status = ? where id = ?',[$status,$id]);
     }
 
+    public function update_payment($id,$total,$date)
+    {
+        DB::table('payment')
+            ->where('id',$id)
+            ->update(
+            ['total' => $total,'importdate' => $date]
+    );                   
+    }
     //Insert type
     //Input: 
     //Output: null
     public function insert($id, $importcoupon_id, $staff_id, $total, $importdate, $status)
     {
-        DB::insert('insert into importcoupon values (?,?,?,?,?,?)',
+        DB::insert('insert into payment values (?,?,?,?,?,?)',
                     [$id, $importcoupon_id, $staff_id, $total, $importdate, $status]);
     }
 }

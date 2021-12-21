@@ -14,6 +14,7 @@ use App\Http\Controllers\Importcoupon_detailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\StatisticalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,30 +43,12 @@ Route::get('/logout',[LoginController::class, 'logout']);
 Route::post('/admin-dashboard',[LoginController::class, 'check_login']);
 
 Route::get('/admin',[LoginController::class, 'decentralization']);
-Route::prefix('/admin')->group(function(){
-    Route::prefix('/9')->group(function () {
-        Route::get('',[AccountController::class, 'account_management']);
-        Route::get('/add',[AccountController::class, 'add_account']);
-        Route::post('/add_account',[AccountController::class, 'add_save_account']);
-        Route::post('/hidden',[AccountController::class, 'hidden_account']);
-        Route::post('/unhidden',[AccountController::class, 'unhidden_account']);
-    });
-
-    Route::prefix('/10')->group(function () {
-        Route::get('',[PermissionController::class, 'permission_management']);
-        Route::get('/add',[PermissionController::class, 'add_position_permission']);
-        Route::post('/add-save',[PermissionController::class, 'repair_save_position_permission']);
-        Route::post('/hidden',[PermissionController::class, 'hidden_position_permission']);
-        Route::get('/unhidden',[PermissionController::class, 'unhidden_position_permission']);
-        Route::post('/unhidden-save',[PermissionController::class, 'unhidden_save_position_permission']);
-        Route::get('/repair',[PermissionController::class, 'repair_position_permission']);
-        Route::post('/repair-save',[PermissionController::class, 'repair_save_position_permission']);
-        
-    });
-});
 Route::prefix('pages')->group(function () {
     Route::get('',[LoginController::class, 'decentralization']);
-    Route::get('/1',[LoginController::class, 'decentralization']);
+    // Route::get('/1',[LoginController::class, 'decentralization']);
+    Route::prefix('/1')->group(function () {
+        Route::get('',[StatisticalController::class, 'open_class']);
+    });
     Route::prefix('/2')->group(function () {
         Route::get('',[MaterialController::class, 'open_class']);
         Route::get('/add',[AccountController::class, 'add_account']);
@@ -122,6 +105,25 @@ Route::prefix('pages')->group(function () {
         Route::post('/unhidden',[ReceiptController::class, 'unhidden_receipt']);
         Route::get('/add',[ReceiptController::class, 'add_receipt']);        
         Route::post('/add_save',[ReceiptController::class, 'add_receipt_save']);        
+    });
+    Route::prefix('/9')->group(function () {
+        Route::get('',[AccountController::class, 'account_management']);
+        Route::get('/add',[AccountController::class, 'add_account']);
+        Route::post('/add_account',[AccountController::class, 'add_save_account']);
+        Route::post('/hidden',[AccountController::class, 'hidden_account']);
+        Route::post('/unhidden',[AccountController::class, 'unhidden_account']);
+    });
+
+    Route::prefix('/10')->group(function () {
+        Route::get('',[PermissionController::class, 'permission_management']);
+        Route::get('/add',[PermissionController::class, 'add_position_permission']);
+        Route::post('/add-save',[PermissionController::class, 'repair_save_position_permission']);
+        Route::post('/hidden',[PermissionController::class, 'hidden_position_permission']);
+        Route::get('/unhidden',[PermissionController::class, 'unhidden_position_permission']);
+        Route::post('/unhidden-save',[PermissionController::class, 'unhidden_save_position_permission']);
+        Route::get('/repair',[PermissionController::class, 'repair_position_permission']);
+        Route::post('/repair-save',[PermissionController::class, 'repair_save_position_permission']);
+        
     });
 });
 

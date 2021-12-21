@@ -46,20 +46,22 @@
                             @if($arraycolumn[5]==1)
                                 <form method="post" action="{{URL::to('pages/6/hidden')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa phiếu" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box" ></i></button>
+                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Khóa phiếu" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box" ></i></button>
                                 </form>
+                                <form method="post" action="{{URL::to('pages/6/detail')}}">
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Chi tiết phiếu" name="payment_detail_id" value="{{$arraycolumn[0]}}" id="payment_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
+                             </form>
                             @elseif($arraycolumn[5]==0)
                                 <form method="post" action="{{URL::to('pages/6/unhidden')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở khóa" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
+                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px; width: 40px;height: 40px" title="Mở khóa" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
                                 </form>
-                            @endif
-                            @if($arStaff[0] == 1)
-                            <form method="post" action="{{URL::to('pages/6/detail')}}">
+                                <form method="post" action="{{URL::to('pages/6/detail')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px;" title="Chi tiết phiếu" name="payment_detail_id" value="{{$arraycolumn[0]}}" id="payment_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
-                             </form> 
-                             @endif
+                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Chi tiết phiếu" name="payment_detail_id" value="{{$arraycolumn[0]}}" id="payment_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
+                             </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

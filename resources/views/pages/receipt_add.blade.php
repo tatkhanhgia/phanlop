@@ -68,8 +68,8 @@
                          @foreach($arrayMate as $row)
 					        							                    
 						    <tr>
-                            <td>{{$row[1]}}</td> <!--id-->
-							<td>{{$row[2]}}</td> <!--tên sp-->
+                            <td>{{$row[0]}}</td> <!--id-->
+							<td>{{$row[1]}}</td> <!--tên sp-->
                             <td>{{$row[3]}}</td> <!--giá sp -->
                             @if($row[4] == 1)
 							<td><label><input class=" form-control" type="text" id="<?php echo $count; ?>" name="<?php echo $count;?>" value ="0" pattern="[0-9.]*" required onchange="onupdate(<?php echo $count;$count++;?>)"></label></td>

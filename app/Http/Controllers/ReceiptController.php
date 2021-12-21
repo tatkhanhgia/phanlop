@@ -79,49 +79,19 @@ class ReceiptController extends Controller
         return $this->open_class();
     }
 
-    public function getproduct_notitle(){
+    //Convert id sang name
+    public function getproduct_title(){
         $arrayMate = array();
         $model = ProductModel::get_all();
         foreach ($model as $row){
             $arrayMate[] = array($row->id,
-                              $row->type_id,                                                        
-                              $row->saleprice,
-                              $row->dates,
-                              $row->status);
+                                $row->name,
+                                $row->type_id,                                                        
+                                $row->saleprice,
+                                $row->dates,
+                                $row->status);
         }     
         return $arrayMate;
-    }
-    //Convert id sang name
-    public function getproduct_title(){        
-        $arraymain = $this->getproduct_notitle();
-        $id = ReceiptModel::select_receipt_end();
-        $id = $id + 1;
-        $arrayResult = array();
-        foreach($arraymain as $row)
-        {
-            $temp = "";                        
-            switch($row[0]){
-                case 1: $temp = "Cà phê đen"; break;
-                case 2: $temp = "Cà phê sữa"; break;
-                case 3: $temp = "Bạc xỉu"; break;
-                case 4: $temp = "Trà sen vàng"; break;
-                case 5: $temp = "Trà đào sả"; break;
-                case 6: $temp = "Trà đào sữa"; break;
-                case 7: $temp = "Bánh tiramisu"; break;
-                case 8: $temp = "Bánh Mouse Đào"; break;
-                case 9: $temp = "Bánh Mouse Chanh dây"; break;
-                case 10: $temp = "Trà xanh đá xay"; break;
-                case 11: $temp = "Socola đá xay"; break;
-                case 12: $temp = "Cookie&Cream"; break;
-            }
-            $arrayResult[] = array($id,
-                                    $row[0],   
-                                    $temp,                                
-                                   $row[2],
-                                   $row[4]                                   
-                                   );
-        }
-        return $arrayResult;
     }
 
     //Hàm cho admin khởi tạo giao diện chỉnh sửa phiếu

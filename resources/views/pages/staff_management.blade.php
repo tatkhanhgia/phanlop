@@ -45,17 +45,17 @@
                             @if($arraycolumn[8]==1)
                                 <form method="post" action="{{URL::to('pages/8/hidden')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-lock" ></i></button>
+                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Khóa" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-lock" ></i></button>
                                 </form>
                             @elseif($arraycolumn[8]==0)
                                 <form method="post" action="{{URL::to('pages/8/unhidden')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
+                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px; width: 40px;height: 40px" title="Mở" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fa fa-unlock" ></i></button>
                                 </form>
                             @endif
                             <form method="post" action="{{URL::to('pages/8/change')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px;" title="Thay đổi thông tin" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-cog" ></i></button>
+                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Thay đổi thông tin" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-cog" ></i></button>
                              </form> 
                         </td>
                     </tr>

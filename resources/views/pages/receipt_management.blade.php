@@ -29,7 +29,7 @@
                         <td><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>
                         <td><span class="text-ellipsis">{{$arraycolumn[2]}}</span></td>  
                         <td><span class="text-ellipsis">{{$arraycolumn[3]}}</span></td>  
-                        <td><span class="text-ellipsis">{{$arraycolumn[4]}}</span></td>                                                                   
+                        <!-- <td><span class="text-ellipsis">{{$arraycolumn[4]}}</span></td>                                                                    -->
                         @if($arraycolumn[4]==1)
                             <td><span class="text-ellipsis" style="color: green;">Còn hàng</span></td>
                         @elseif($arraycolumn[4]==0)
@@ -39,19 +39,20 @@
                             @if($arraycolumn[4]==1)
                                 <form method="post" action="{{URL::to('pages/7/hidden')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box" ></i></button>
+                                    <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Khóa hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box" ></i></button>
                                 </form>
+                                <form method="post" action="{{URL::to('pages/7/detail')}}">
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Thay đổi thông tin" name="receipt_detail_id" value="{{$arraycolumn[0]}}" id="receipt_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
+                             </form>
                             @elseif($arraycolumn[4]==0)
                                 <form method="post" action="{{URL::to('pages/7/unhidden')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
+                                    <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px; width: 40px;height: 40px" title="Mở hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>
                                 </form>
-                            @endif
-                            <?php $arStaff = Session::get('arStaff'); ?>
-                            @if($arStaff[0] == 1)
-                            <form method="post" action="{{URL::to('pages/7/detail')}}">
+                                <form method="post" action="{{URL::to('pages/7/detail')}}">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px;" title="Thay đổi thông tin" name="receipt_detail_id" value="{{$arraycolumn[0]}}" id="receipt_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
+                                    <button class="btn btn-info btn-sm" style="font-size: 17px; margin-top: 5px; width: 40px;height: 40px" title="Thay đổi thông tin" name="receipt_detail_id" value="{{$arraycolumn[0]}}" id="receipt_detail_id" type="submit"><i class="fas fa-cog" ></i></button>
                              </form>
                             @endif
                         </td>

@@ -14,19 +14,106 @@
 						Morris.Bar({
 						  element: 'graph6',
 						  data: [
-							{x: '2011 Q1', y: 0},
-							{x: '2011 Q2', y: 1},
-							{x: '2011 Q3', y: 2},
-							{x: '2011 Q4', y: 3},
-							{x: '2012 Q1', y: 4},
-							{x: '2012 Q2', y: 5},
-							{x: '2012 Q3', y: 6},
-							{x: '2012 Q4', y: 7},
-							{x: '2013 Q1', y: 8}
+						  <?php 
+						  		foreach ($arrayMate as $value){
+						  			echo "{x:'";
+						  			echo $value[0];
+						  			echo "', y:";
+						  			echo $value[1];
+						  			echo "},";
+						  			// echo "{x: 'A', y: 1},";
+						  		}	
+						  ?>
 						  ],
 						  xkey: 'x',
 						  ykeys: ['y'],
-						  labels: ['Y'],
+						  labels: ['Số lượng'],
+						  barColors: function (row, series, type) {
+							if (type === 'bar') {
+							  var red = Math.ceil(255 * row.y / this.ymax);
+							  return 'rgb(' + red + ',0,0)';
+							}
+							else {
+							  return '#000';
+							}
+						  }
+						});
+						</script>
+
+					</div>
+				</div>
+			</div>
+	</section>
+	<section class="panel">
+		<header class="panel-heading">
+			Thống kê doanh thu theo tháng
+		</header>
+		<div class="floatcharts_w3layouts_left">
+				<div class="floatcharts_w3layouts_top">
+					<div class="floatcharts_w3layouts_bottom">
+						<div id="graph7"></div>
+						<script>
+						// Use Morris.Bar
+						Morris.Bar({
+						  element: 'graph7',
+						  data: [
+						  <?php 
+						  		foreach ($arrayMate1 as $value){
+						  			echo "{x:'Tháng ";
+						  			echo $value[0];
+						  			echo "', y:";
+						  			echo $value[1];
+						  			echo "},";
+						  			// echo "{x: 'A', y: 1},";
+						  		}	
+						  ?>
+						  ],
+						  xkey: 'x',
+						  ykeys: ['y'],
+						  labels: ['Doanh thu'],
+						  barColors: function (row, series, type) {
+							if (type === 'bar') {
+							  var red = Math.ceil(255 * row.y / this.ymax);
+							  return 'rgb(' + red + ',0,0)';
+							}
+							else {
+							  return '#000';
+							}
+						  }
+						});
+						</script>
+
+					</div>
+				</div>
+			</div>
+	</section>
+	<section class="panel">
+		<header class="panel-heading">
+			Thống kê doanh thu từng ngày theo tháng hiện tại
+		</header>
+		<div class="floatcharts_w3layouts_left">
+				<div class="floatcharts_w3layouts_top">
+					<div class="floatcharts_w3layouts_bottom">
+						<div id="graph8"></div>
+						<script>
+						// Use Morris.Bar
+						Morris.Bar({
+						  element: 'graph8',
+						  data: [
+						  <?php 
+						  		foreach ($arrayMate2 as $value){
+						  			echo "{x:'";
+						  			echo $value[0];
+						  			echo "', y:";
+						  			echo $value[1];
+						  			echo "},";
+						  			// echo "{x: 'A', y: 1},";
+						  		}	
+						  ?>
+						  ],
+						  xkey: 'x',
+						  ykeys: ['y'],
+						  labels: ['Doanh thu'],
 						  barColors: function (row, series, type) {
 							if (type === 'bar') {
 							  var red = Math.ceil(255 * row.y / this.ymax);

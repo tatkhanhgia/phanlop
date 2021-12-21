@@ -19,6 +19,7 @@ class ProductController extends Controller
         $model = ProductModel::get_all();
         foreach ($model as $row){
             $arrayMate[] = array($row->id,
+                                $row->name,
                               $row->type_id,                                                        
                               $row->saleprice,
                               $row->dates,

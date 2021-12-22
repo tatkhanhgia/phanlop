@@ -51,7 +51,8 @@ class ReceiptController extends Controller
     public function add_receipt(){
         if(CheckController::check_session()) {
             return view('pages.receipt_add')
-                ->with('arrayMate', $this->getproduct_title());
+                ->with('arrayMate', $this->getproduct_title())
+                ->with('id_receipt', ReceiptModel::get_all()->count()+1);
         }else{
             return view('admin_login');
         }
@@ -98,13 +99,12 @@ class ReceiptController extends Controller
     public function detail(Request $request){
         $id = $request->input('receipt_detail_id');
         $model = ReceiptModel::get_detail_receipt($id);
-        $model2 = ReceiptDetailModel:: get_detail_receipt($id);
+        $model2 = ReceiptDetailModel::get_detail_receipt($id);
         foreach($model as $row)
         {
             foreach($model2 as $row2)
             {            
                 $arrayMate2[] = array(
-                        $row2->receipt_id,
                         $row2->product_id,
                         $row2->quantity                        
                 );

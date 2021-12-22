@@ -27,7 +27,7 @@
 					<div class="form-group ">
 						<label for="username" class="control-label col-lg-3">Mã hóa đơn</label>
 						<div class="col-lg-6">
-							<input class=" form-control" id="id" name="id" type="text" value="<?php echo $arrayMate[0][0]?>" readonly="readonly">
+							<input class=" form-control" id="id" name="id" type="text" value="<?php echo $id_receipt?>" readonly="readonly">
 						</div>
 					</div>
                     <div class="form-group ">
@@ -71,9 +71,9 @@
                             <td>{{$row[0]}}</td> <!--id-->
 							<td>{{$row[1]}}</td> <!--tên sp-->
                             <td>{{$row[3]}}</td> <!--giá sp -->
-                            @if($row[4] == 1)
+                            @if($row[5] == 1)
 							<td><label><input class=" form-control" type="text" id="<?php echo $count; ?>" name="<?php echo $count;?>" value ="0" pattern="[0-9.]*" required onchange="onupdate(<?php echo $count;$count++;?>)"></label></td>
-							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="0" pattern="[0-9.]*" required readonly= "readonly"></label></td>
+							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="0" pattern="[0-9.]*" ></label></td>
                             @else
                             <td><label><input class=" form-control" type="text" id="<?php echo $count; ?>" name="<?php echo $count;?>" value ="0" pattern="[0-9.]*" required onchange="onupdate(<?php echo $count;$count++;?>)" readonly= "readonly"></label></td>
 							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="0" pattern="[0-9.]*" required readonly= "readonly"></label></td>

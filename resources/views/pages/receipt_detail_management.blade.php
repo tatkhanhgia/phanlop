@@ -67,17 +67,17 @@
                         <tbody>	
                          @foreach($arrayMate[6] as $row)                                                        
 						    <tr>
-                            <td>{{$row[1]}}</td> <!--id-->
-							<td>{{$row[3]}}</td> <!--tên sp-->
-                            <td>{{$row[2]}}</td> <!--giá sp -->
+                            <td>{{$row[0]}}</td> <!--id-->
+							<td>{{$row[1]}}</td> <!--tên sp-->
+                            <td>{{$row[3]}}</td> <!--giá sp -->
                             <?php $value = 0; ?>
                             @foreach($arrayMate[5] as $row2)
-                            @if($row[1] == $row2[1])
-                                <?php $value = $row2[2]?>
+                            @if($row[0] == $row2[0])
+                                <?php $value = $row2[1];?>
                             @endif
                             @endforeach
 							<td><label><input class=" form-control" type="text" id="<?php echo $count; ?>" name="<?php echo $count;?>" value ="<?php echo $value;?>" pattern="[0-9.]*" required onchange="onupdate(<?php echo $count;$count++;?>)"></label></td>                                                                                    
-							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="0" pattern="[0-9.]*" required></label></td>
+							<td><label><input class=" form-control" type="text" id="<?php echo $count2; ?>" name="<?php echo $count2;$count2++;?>" value ="<?php echo $value*$row[3]*1000;?>" pattern="[0-9.]*" required></label></td>
 						    </tr>
                             
                         @endforeach						

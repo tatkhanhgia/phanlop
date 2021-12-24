@@ -36,12 +36,16 @@ class ProductModel extends Model
         DB::update('update product set status = ? where id = ?',[$status,$id]);
     }
 
+    public function select_product_end(){
+        return DB::table('product')->orderBy('id','ASC')->get()->pluck('id')->last();
+    }
+
     //Insert product
     //Input: 
     //Output: null
-    public function insert($id, $type_id, $saleprice, $dates, $status)
+    public function insert($id, $name,$type_id, $saleprice, $dates, $status)
     {
-        DB::insert('insert into product values (?,?,?,?,?)',
-                    [$id, $type_id, $saleprice, $dates, $status]);
+        DB::insert('insert into product values (?,?,?,?,?,?)',
+                    [$id, $name,$type_id, $saleprice, $dates, $status]);
     }
 }

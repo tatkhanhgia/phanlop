@@ -31,7 +31,7 @@ class ReceiptController extends Controller
     //Hiện giao diện 
     public function open_class(){                
         if(CheckController::check_session()) {
-            return view('pages.receipt_management')
+            return view('pages.Receipt.receipt_management')
                 ->with('arrayMate', $this->receipt());
         }else{
             return view('admin_login');
@@ -50,7 +50,7 @@ class ReceiptController extends Controller
 
     public function add_receipt(){
         if(CheckController::check_session()) {
-            return view('pages.receipt_add')
+            return view('pages.Receipt.receipt_add')
                 ->with('arrayMate', $this->getproduct_title())
                 ->with('id_receipt', ReceiptModel::get_all()->count()+1);
         }else{
@@ -73,7 +73,7 @@ class ReceiptController extends Controller
             $productid= $i;
             $soluong=  $request->input(''.$i);
             if($soluong == 0)
-                continue;
+                continue;            
             ReceiptDetailModel::insert($receipid,$productid,$soluong);
         }                       
         
@@ -97,7 +97,7 @@ class ReceiptController extends Controller
 
     //Hàm cho admin khởi tạo giao diện chỉnh sửa phiếu
     public function detail(Request $request){
-        $id = $request->input('receipt_detail_id');
+        $id = $request->input('receipt_detail_id');        
         $model = ReceiptModel::get_detail_receipt($id);
         $model2 = ReceiptDetailModel::get_detail_receipt($id);
         foreach($model as $row)
@@ -120,7 +120,7 @@ class ReceiptController extends Controller
             );            
         };
         if(CheckController::check_session()) {
-            return view('pages.receipt_detail_management')
+            return view('pages.Receipt.receipt_detail_management')
                 ->with('arrayMate', $arrayMate);
         }else{
             return view('admin_login');
@@ -135,12 +135,13 @@ class ReceiptController extends Controller
          $staff=$request->input('staffid');
          $total=$request->input('total');
          $date=$request->input('datepicker');
-         //ReceiptModel::delete_receipt($id);
+         ReceiptModel::delete_receipt($id);
          ReceiptDetailModel::delete_receipt($id);
-         ReceiptModel::update_receipt($id,$total);
+         //ReceiptModel::update_receipt($id,$total);
+         ReceiptModel::insert($id,$staff,$total,$date,1);
          //Lấy dữ liệu tạo chi tiết hóa đơn
          $i = 1;
-         for($i;$i<13;$i++)
+         for($i;$i<14;$i++)
          {
              $receipid = $id;
              $productid= $i;
@@ -148,8 +149,7 @@ class ReceiptController extends Controller
              if($soluong == 0)
                  continue;
              ReceiptDetailModel::insert($receipid,$productid,$soluong);
-         }                       
-         
+         }                                
          return $this->open_class();
     }
 }

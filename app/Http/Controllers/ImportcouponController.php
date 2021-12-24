@@ -60,7 +60,7 @@ class ImportcouponController extends Controller
     //Hiện giao diện 
     public function open_class(){                
         if(CheckController::check_session()) {
-            return view('pages.importcoupon_management')
+            return view('pages.ImportCoupon.importcoupon_management')
                 ->with('arrayMate', $this->importcoupon());
         }else{
             return view('admin_login');
@@ -80,7 +80,7 @@ class ImportcouponController extends Controller
     public function add_import(){
         $id = ImportcouponModel::select_import_end()+1;
         if(CheckController::check_session()) {
-            return view('pages.importcoupon_add_management')
+            return view('pages.ImportCoupon.importcoupon_add_management')
                 ->with('arrayMate', $id);
         }else{
             return view('admin_login');
@@ -97,7 +97,7 @@ class ImportcouponController extends Controller
             $producer_id,
             $importdate
         );
-        return view('pages.importcoupon_detail_add_management')
+        return view('pages.ImportCoupon.importcoupon_detail_add_management')
                 ->with('arrayMate', $array);        
     }
 
@@ -159,7 +159,7 @@ class ImportcouponController extends Controller
                     $arrayMate2
             );
         }
-        return view('pages.importcoupon_change')
+        return view('pages.ImportCoupon.importcoupon_change')
                     ->with('arrayMate', $arrayMate);        
 
     }

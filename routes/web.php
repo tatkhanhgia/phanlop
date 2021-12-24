@@ -63,7 +63,9 @@ Route::prefix('pages')->group(function () {
     });
     Route::prefix('/4')->group(function () {
         Route::get('',[ProductController::class, 'open_class']);
-        Route::get('/add',[ProductController::class, 'add_type']);
+        Route::get('/add',[ProductController::class, 'add_product']);
+        Route::post('/add_save',[ProductController::class, 'add_product_save']);
+        Route::post('/add_consume_save',[ProductController::class, 'save']);
         Route::post('/hidden',[ProductController::class, 'hidden_type']);
         Route::post('/unhidden',[ProductController::class, 'unhidden_type']);
     });

@@ -33,7 +33,7 @@ class StaffController extends Controller
     //Hiện giao diện 
     public function open_class(){                
         if(CheckController::check_session()) {
-            return view('pages.staff_management')
+            return view('pages.Staff.staff_management')
                 ->with('arrayMate', $this->Staff());
         }else{
             return view('admin_login');
@@ -54,7 +54,7 @@ class StaffController extends Controller
     public function add_staff(Request $request){
         $array = StaffModel::select_staff_end();
         if(CheckController::check_session()) {
-            return view('pages.staff_add')
+            return view('pages.Staff.staff_add')
                 ->with('arrayMate', $array+1);
         }else{
             return view('admin_login');
@@ -92,7 +92,7 @@ class StaffController extends Controller
             );
         }
         if(CheckController::check_session()) {
-            return view('pages.Staff_detail')
+            return view('pages.Staff.Staff_detail')
                 ->with('arrayMate', $arrayMate);
         }else{
             return view('admin_login');
@@ -110,7 +110,7 @@ class StaffController extends Controller
         $email = $request->get('email');
         StaffModel::update_staff( $id, $surname, $name, $date, $phone, $address, $email);
         if(CheckController::check_session()) {
-            return view('pages.staff_management')
+            return view('pages.Staff.staff_management')
                 ->with('arrayMate', $this->Staff());
         }else{
             return view('admin_login');

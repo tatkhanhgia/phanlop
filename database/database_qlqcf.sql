@@ -305,19 +305,19 @@ CREATE TABLE `product` (
 
 /*--Đổ dữ liệu cho bảng product _ sản phẩm*/
 
-INSERT INTO `product` (`id`, `type_id`, `saleprice`,`dates`,`status`) VALUES
-(1,1,"29.000",'2021-10-20',1), /*cf den*/
-(2,1,"29.000",'2021-10-20',1), /*cf sua*/
-(3,1,"29.000",'2021-10-20',1), /*bac xiu*/
-(4,2,"39.000",'2021-10-20',1), /*tra olong*/
-(5,2,"39.000",'2021-10-20',1), /*tra dao*/
-(6,2,"39.000",'2021-10-20',1), /*tra sua*/
-(7,3,"19.000",'2021-10-20',1), /*banh tira*/
-(8,3,"19.000",'2021-10-20',1), /*banh mouse Dao*/
-(9,3,"19.000",'2021-10-20',1), /*banh mouse Chanh day*/
-(10,4,"49.000",'2021-10-20',1), /*tra xanh da xay*/
-(11,4,"49.000",'2021-10-20',1), /*socola da xay*/
-(12,4,"49.000",'2021-10-20',1); /*cookie&cream*/
+INSERT INTO `product` (`id`,`name`, `type_id`, `saleprice`,`dates`,`status`) VALUES
+(1,'Cà phê đen',1,"29.000",'2021-10-20',1), /*cf den*/
+(2,'Cà phê sữa',1,"29.000",'2021-10-20',1), /*cf sua*/
+(3,'Bạc xỉu',1,"29.000",'2021-10-20',1), /*bac xiu*/
+(4,'Trà sen vàng',2,"39.000",'2021-10-20',1), /*tra olong*/
+(5,'Trà đào sả',2,"39.000",'2021-10-20',1), /*tra dao*/
+(6,'Trà đào sữa',2,"39.000",'2021-10-20',1), /*tra sua*/
+(7,'Bánh tiramisu',3,"19.000",'2021-10-20',1), /*banh tira*/
+(8,'Bánh mouse Đào',3,"19.000",'2021-10-20',1), /*banh mouse Dao*/
+(9,'Bánh mouse Chanh dây',3,"19.000",'2021-10-20',1), /*banh mouse Chanh day*/
+(10,'Trà xanh đá xay',4,"49.000",'2021-10-20',1), /*tra xanh da xay*/
+(11,'Socola đá xay',4,"49.000",'2021-10-20',1), /*socola da xay*/
+(12,'Cookie&Cream',4,"49.000",'2021-10-20',1); /*cookie&cream*/
 
 
 -- --------------------------------------------------------

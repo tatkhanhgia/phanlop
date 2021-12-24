@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\MaterialModel;
 use App\Models\TypeModel;
+use App\Models\ConvertModel;
 use Session;
 use Cookie;
 use Auth;
@@ -13,6 +15,22 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    //Hamf get dữ liệu nguyên liệu
+    public function material(){
+        $arrayMate = array();
+        $model = MaterialModel::get_all();
+        foreach ($model as $row){
+            $arrayMate[] = array($row->id,
+                              $row->producer_id,
+                              $row->title_name,
+                              $row->quantity,
+                              $row->importprice,
+                              $row->importdate,                              
+                              "Kg",
+                              $row->status);
+        }     
+        return $arrayMate;
+    }
     //Hàm get dữ liệu  
     public function product(){
         $arrayMate = array();
@@ -32,41 +50,27 @@ class ProductController extends Controller
         $arraymain = $this->product();
         $arrayResult = array();
         foreach($arraymain as $row)
-        {
-            $temp = "";
+        {            
             $title = "";
-            $model = TypeModel::get_type($row[1]);
+            $model = TypeModel::get_type($row[2]);
             foreach($model as $roww)
             {
                 $title=$roww->title_name;
             }
-            switch($row[0]){
-                case 1: $temp = "Cà phê đen"; break;
-                case 2: $temp = "Cà phê sữa"; break;
-                case 3: $temp = "Bạc xỉu"; break;
-                case 4: $temp = "Trà sen vàng"; break;
-                case 5: $temp = "Trà đào sả"; break;
-                case 6: $temp = "Trà đào sữa"; break;
-                case 7: $temp = "Bánh tiramisu"; break;
-                case 8: $temp = "Bánh Mouse Đào"; break;
-                case 9: $temp = "Bánh Mouse Chanh dây"; break;
-                case 10: $temp = "Trà xanh đá xay"; break;
-                case 11: $temp = "Socola đá xay"; break;
-                case 12: $temp = "Cookie&Cream"; break;
-            }
-            $arrayResult[] = array($row[0],
-                                   $title,
-                                   $row[2],
+           
+            $arrayResult[] = array($row[0],                                   
+                                    $row[1],
+                                   $title,                                                                      
                                    $row[3],                             
                                    $row[4],
-                                   $temp);
+                                   $row[5]);
         }
         return $arrayResult;
     }
     //Hiện giao diện 
     public function open_class(){                
         if(CheckController::check_session()) {
-            return view('pages.product_management')
+            return view('pages.Product.product_management')
                 ->with('arrayMate', $this->convert_to_name());
         }else{
             return view('admin_login');
@@ -80,6 +84,58 @@ class ProductController extends Controller
 
     public function unhidden_type(Request $request){
         ProductModel::set_status_product($request->get('id'),1);
+        return $this->open_class();
+    }
+
+    //Hàm thêm sản phẩm
+    public function add_product(){
+        $id = ProductModel::select_product_end() + 1;
+        if(CheckController::check_session()) {
+            return view('pages.Product.product_add_management')
+                        ->with('arrayMate', $id);
+        }else{
+            return view('admin_login');
+        }
+    }
+
+    public function add_product_save(Request $request){
+        $id         = $request->input('id');
+        $name       = $request->input('name');
+        $type       = $request->input('type_id');
+        $saleprice  = $request->input('saleprice');
+        $datepicker = $request->input('datepicker');
+        $arrayproduct=array($id,
+                            $name,
+                            $type,
+                            $saleprice,
+                            $datepicker ,
+                            $this->material());
+        $request->session()->put('id',$id);
+        $request->session()->put('name',$name);
+        $request->session()->put('type',$type);
+        $request->session()->put('saleprice',$saleprice);
+        $request->session()->put('datepicker',$datepicker);
+        return view('pages.Product.product_add_consume')
+                ->with('arrayMate', $arrayproduct);
+    }
+
+    public function save(Request $request){
+        $id = $request->session()->pull('id');
+        $name = $request->session()->pull('name');
+        $type = $request->session()->pull('type');
+        $saleprice = $request->session()->pull('saleprice');
+        $datepicker = $request->session()->pull('datepicker');
+        ProductModel::insert($id,$name,$type,$saleprice,$datepicker,1);
+        $i = 0;
+        $count = MaterialModel::select_material_end();
+        for($i;$i<$count;$i++)
+        {
+            $materialid = $i+1;
+            $quantity = $request->input(''.$i);
+            if($quantity == 0 )
+                continue;
+            ConvertModel::insert($id,$materialid,$quantity);
+        }
         return $this->open_class();
     }
 }

@@ -27,7 +27,7 @@ class TypeController extends Controller
     //Hiện giao diện 
     public function open_class(){                
         if(CheckController::check_session()) {
-            return view('pages.type_management')
+            return view('pages.Type.type_management')
                 ->with('arrayMate', $this->type());
         }else{
             return view('admin_login');

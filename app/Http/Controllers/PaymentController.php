@@ -39,7 +39,7 @@ class PaymentController extends Controller
     //Hiện giao diện 
     public function open_class(){                
         if(CheckController::check_session()) {
-            return view('pages.payment_management')
+            return view('pages.Payment.payment_management')
                 ->with('arrayMate', $this->payment());
         }else{
             return view('admin_login');
@@ -63,7 +63,7 @@ class PaymentController extends Controller
             $id,$id
         );
         if(CheckController::check_session()) {
-            return view('pages.payment_add_management')
+            return view('pages.Payment.payment_add_management')
                 ->with('arrayMate', $arrayMate);
         }else{
             return view('admin_login');
@@ -102,7 +102,7 @@ class PaymentController extends Controller
             );
         }
         if(CheckController::check_session()) {
-            return view('pages.payment_detail_management')
+            return view('pages.Payment.payment_detail_management')
                 ->with('arrayMate', $arrayMate);
         }else{
             return view('admin_login');

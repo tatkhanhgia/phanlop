@@ -57,8 +57,8 @@ class MaterialModel extends Model
     //Select id max của table account
     //Input: Null
     //Output: Trả về id max của account
-    public function select_account_end(){
-        return DB::table('account')->orderBy('id','ASC')->get()->pluck('id')->last();
+    public function select_material_end(){
+        return DB::table('material')->orderBy('id','ASC')->get()->pluck('id')->last();
     }
 
     //Insert material

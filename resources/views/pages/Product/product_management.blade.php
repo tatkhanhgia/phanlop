@@ -27,22 +27,22 @@
                 @foreach($arrayMate as $arraycolumn)
                     <tr>
                         <td>{{$arraycolumn[0]}}</td>
-                        <td><span class="text-ellipsis">{{$arraycolumn[5]}}</span></td>
-                        <td><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>  
+                        <td><span class="text-ellipsis">{{$arraycolumn[1]}}</span></td>
                         <td><span class="text-ellipsis">{{$arraycolumn[2]}}</span></td>  
-                        <td><span class="text-ellipsis">{{$arraycolumn[3]}}</span></td>                                                                   
-                        @if($arraycolumn[4]==1)
+                        <td><span class="text-ellipsis">{{$arraycolumn[3]}}</span></td>  
+                        <td><span class="text-ellipsis">{{$arraycolumn[4]}}</span></td>                                                                   
+                        @if($arraycolumn[5]==1)
                             <td><span class="text-ellipsis" style="color: green;">Còn hàng</span></td>
-                        @elseif($arraycolumn[4]==0)
+                        @elseif($arraycolumn[5]==0)
                             <td><span class="text-ellipsis" style="color: red;">Hết hàng</span></td>                       
                         @endif                        
                         <td>
-                            @if($arraycolumn[4]==1)
+                            @if($arraycolumn[5]==1)
                                 <form method="post" action="{{URL::to('pages/4/hidden')}}">
                                     {{ csrf_field() }}
                                     <button class="btn btn-danger btn-sm" style="font-size: 17px; margin-top: 5px;" title="Khóa hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box" ></i></button>
                                 </form>
-                            @elseif($arraycolumn[4]==0)
+                            @elseif($arraycolumn[5]==0)
                                 <form method="post" action="{{URL::to('pages/4/unhidden')}}">
                                     {{ csrf_field() }}
                                     <button class="btn btn-danger btn-sm" style="font-size: 14px; margin-top: 5px;" title="Mở hàng" name="id" value="{{$arraycolumn[0]}}" id="id" type="submit"><i class="fas fa-box-open" ></i></button>

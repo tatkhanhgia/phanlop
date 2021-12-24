@@ -77,7 +77,7 @@ class MaterialController extends Controller
     //Hiện giao diện kho 
     public function open_class(){                
         if(CheckController::check_session()) {
-            return view('pages.material_management')
+            return view('pages.Material.material_management')
                 ->with('arMate', $this->insert_Name_NCC());
         }else{
             return view('admin_login');

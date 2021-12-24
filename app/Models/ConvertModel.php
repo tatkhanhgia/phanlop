@@ -22,10 +22,9 @@ class ConvertModel extends Model
     //Output: toàn bộ giá trị của id
     public function get_convert($id){
         return DB::select('select * 
-                           from :table
-                           where id = :id', 
-                           ['id' => $id],
-                           ['table'   => $table]);
+                           from `convert`
+                           where product_id = :id', 
+                           ['id' => $id]);
     }
 
     //Insert product

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\ConvertModel;
+use App\Models\MaterialModel;
 use App\Models\TypeModel;
 use App\Models\ReceiptModel;
 use App\Models\ReceiptDetailModel;
@@ -75,6 +77,18 @@ class ReceiptController extends Controller
             if($soluong == 0)
                 continue;            
             ReceiptDetailModel::insert($receipid,$productid,$soluong);
+            $model = ConvertModel::get_convert($productid);
+            foreach($model as $row){                
+                $material_id= $row->material_id;
+                $quantity   = $row->quantity;
+                $model2 = MaterialModel::get_quantity($material_id);
+                foreach($model2 as $row){
+                    $quantity_in_stock =(float) $row->quantity;    
+                }
+                $quantity_in_stock = $quantity_in_stock - $quantity;
+                MaterialModel::update_quantity($material_id,$quantity_in_stock);
+            }
+            
         }                       
         
         return $this->open_class();

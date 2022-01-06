@@ -10,21 +10,19 @@ class StatisticalModels extends Model
     protected $table = "receipt_detail";
     public function count_khoathi()
     {
-        return DB::table('khoathi')->select('select * from khoathi');        
+        return DB::select('select * from khoathi');        
+    }
+    public function count_phongthi($trinhdo){
+        //return DB::table('phongthi')->get();
+        return DB::select('select * 
+                           from phongthi
+                           where  tenphong like \''.$trinhdo.'%\'');
     }
 
-    public function count_total_month($year,$month){
-        $name_from = array($year,$month,01);
-        $name_to = array($year,$month,31);
-        $from=implode('-', $name_from);
-        $to=implode('-', $name_to);
-        return DB::table('receipt')->whereBetween('importdate', [$from, $to])->sum('total');
-        // SELECT sum(total) FROM `receipt` WHERE importdate BETWEEN '2021-12-01' AND '2021-12-31'
-    }
-    public function count_total_day($year,$month,$day){
-        $name_from = array($year,$month,$day);
-        $from=implode('-', $name_from);
-        return DB::table('receipt')->where('importdate', $from)->sum('total');
-        // SELECT sum(total) FROM `receipt` WHERE importdate BETWEEN '2021-12-01' AND '2021-12-31'
-    }
+    public function count_thisinh($trinhdo)
+    {
+        return DB::select('select * from thisinh where  SBD like \''.$trinhdo.'%\''); 
+        //khoathi = \''.$khoathi.'\' and
+               
+    }    
 }

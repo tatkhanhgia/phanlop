@@ -39,5 +39,5 @@ Route::post('/chitiet',[TimkiemController::class,'find2']);
 Route::post('/quaylaidanhsach',[DanhsachController::class,'danhsach']);
 Route::post('/giaychungnhan_in',[PDFController::class,'giaychungnhan']);
 Route::get('/giaychungnhan',[PDFController::class,'index']);
-
+Route::get('/thongke',[StatisticalController::class,'open_class']);
 ?>

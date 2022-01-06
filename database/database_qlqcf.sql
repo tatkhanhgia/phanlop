@@ -297,6 +297,7 @@ INSERT INTO `producer` (`id`, `title_name`, `phonenumber`, `address` ,`status`) 
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
+  `name` nvarchar(255) DEFAULT NULL,
   `type_id` int(11) DEFAULT NULL,
   `saleprice` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `dates` date DEFAULT NULL,

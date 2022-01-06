@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Trang quản lý bán hàng</title>
+    <title>Trang quản lý thi anh văn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -42,7 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <section id="container">
     <!--header start-->
     <header class="header fixed-top clearfix">
-        @include('admin.header')
+        @include('header')
     </header>
     <!--header end-->
 
@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!-- sidebar menu start-->
             <div class="leftside-navigation">
                 <ul class="sidebar-menu" id="nav-accordion">
-                    @include('admin.menuleft')
+                    @include('menuleft')
                 </ul>
             </div>
             <!-- sidebar menu end-->

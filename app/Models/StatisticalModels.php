@@ -8,10 +8,9 @@ use Illuminate\Support\Facades\DB;
 class StatisticalModels extends Model
 {
     protected $table = "receipt_detail";
-    public function count_product($product_id)
+    public function count_khoathi()
     {
-        return DB::table('receipt_detail')->where('product_id',$product_id)->sum('quantity');
-        // Select sum(quantity) from receipt_detail where product_id = $product_id
+        return DB::table('khoathi')->select('select * from khoathi');        
     }
 
     public function count_total_month($year,$month){
